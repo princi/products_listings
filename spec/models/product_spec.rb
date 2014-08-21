@@ -2,7 +2,6 @@ require 'rails_helper'
 
 describe Product do
 
-
   # Check if the all the values are valid product should be created
   it "will create a product with valid values" do
     product = FactoryGirl.build(:product)
