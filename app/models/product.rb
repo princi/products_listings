@@ -1,5 +1,8 @@
 class Product < ActiveRecord::Base
 
+  validates :name, :price, :description, :presence => true
+  validates :price, :numericality => :true
+
 end
 
 # == Schema Information
