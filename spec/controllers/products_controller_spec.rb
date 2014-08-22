@@ -60,6 +60,12 @@ describe ProductsController do
       expect(response).to render_template("show")
     end
 
+    it "renders the same product which is clicked" do
+      product = FactoryGirl.create(:product)
+       xhr :get, :show, :id => product
+      expect(assigns(:product)).to eq product
+    end
+
   end
 
 end
