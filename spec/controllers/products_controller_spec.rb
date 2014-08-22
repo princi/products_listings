@@ -70,11 +70,19 @@ describe ProductsController do
 
   describe "Delete #destroy" do
 
-    it "reduce the product count by 1" do
+    it "reduce the product count by 1 on destroy" do
       product = FactoryGirl.create(:product)
       expect do
         delete :destroy, {:id => product.to_param}
       end.to change(Product, :count).by(-1)
+    end
+
+    it "redirects to products path on destroy" do
+      product = FactoryGirl.create(:product)
+      expect do
+        delete :destroy, {:id => product.to_param}
+      end.to change(Product, :count).by(-1)
+      response.should redirect_to products_path
     end
 
   end
