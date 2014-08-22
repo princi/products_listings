@@ -51,4 +51,15 @@ describe ProductsController do
 
   end
 
+
+  describe "Get #show" do
+
+    it "renders the show template" do
+      product = FactoryGirl.create(:product)
+       xhr :get, :show, :id => product.id
+      expect(response).to render_template("show")
+    end
+
+  end
+
 end

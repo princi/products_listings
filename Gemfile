@@ -28,7 +28,6 @@ gem 'spring',        group: :development
 
 
 group :development do
-  gem 'debugger'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'faker'
@@ -41,9 +40,11 @@ end
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.14'
+  gem 'debugger'
 end
 
 group :test do
+
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'guard-rspec', require: false
