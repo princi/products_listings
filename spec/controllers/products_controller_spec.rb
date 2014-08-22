@@ -79,9 +79,7 @@ describe ProductsController do
 
     it "redirects to products path on destroy" do
       product = FactoryGirl.create(:product)
-      expect do
-        delete :destroy, {:id => product.to_param}
-      end.to change(Product, :count).by(-1)
+      delete :destroy, :id => product
       response.should redirect_to products_path
     end
 
