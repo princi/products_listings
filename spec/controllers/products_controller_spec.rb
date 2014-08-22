@@ -89,5 +89,52 @@ describe ProductsController do
 
   end
 
+  describe "Put #update" do
+    before(:each) do
+      @product = FactoryGirl.create(:product)
+    end
+
+    it "update values of project if valid parameters " do
+      put :update, id: @product, product: FactoryGirl.attributes_for(:product, :price=> 35, :description => "description2", :name => "product2")
+      @product.reload
+      @product.price.should eq(35)
+      @product.description.should eq("description2")
+      @product.name.should eq("product2")
+    end
+
+    it "redirects to products path after update if valid parameters" do
+      put :update, id: @product, product: FactoryGirl.attributes_for(:product, :price=> 35, :description => "description2", :name => "product2")
+      expect(response).to redirect_to(products_path)
+    end
+
+    it "not update product if without price and render edit" do
+      put :update, id: @product, product: FactoryGirl.attributes_for(:product, :without_price)
+      @product.reload
+      @product.price.should_not(nil)
+      expect(response).to render_template(:edit)
+    end
+
+    it "not update product if price is invalid and render edit" do
+      put :update, id: @product, product: FactoryGirl.attributes_for(:product, :invalid_price)
+      @product.reload
+      @product.price.should_not == "price"
+      expect(response).to render_template(:edit)
+    end
+
+    it "not update product if without name and render edit" do
+      put :update, id: @product, product: FactoryGirl.attributes_for(:product, :without_name)
+      @product.reload
+      @product.name.should_not(nil)
+      expect(response).to render_template(:edit)
+    end
+
+    it "not update product if without description and render edit" do
+      put :update, id: @product, product: FactoryGirl.attributes_for(:product, :without_description)
+      @product.reload
+      @product.description.should_not(nil)
+      expect(response).to render_template(:edit)
+    end
+
+  end
 
 end
