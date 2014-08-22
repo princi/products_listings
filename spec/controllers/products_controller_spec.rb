@@ -56,7 +56,7 @@ describe ProductsController do
 
     it "renders the show template" do
       product = FactoryGirl.create(:product)
-       xhr :get, :show, :id => product.id
+       xhr :get, :show, :id => product
       expect(response).to render_template("show")
     end
 
@@ -64,6 +64,17 @@ describe ProductsController do
       product = FactoryGirl.create(:product)
        xhr :get, :show, :id => product
       expect(assigns(:product)).to eq product
+    end
+
+  end
+
+  describe "Delete #destroy" do
+
+    it "reduce the product count by 1" do
+      product = FactoryGirl.create(:product)
+      expect do
+        delete :destroy, {:id => product.to_param}
+      end.to change(Product, :count).by(-1)
     end
 
   end
