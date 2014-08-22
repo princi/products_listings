@@ -53,36 +53,39 @@ describe ProductsController do
 
 
   describe "Get #show" do
+    before(:each) do
+      @product = FactoryGirl.create(:product)
+    end
 
     it "renders the show template" do
-      product = FactoryGirl.create(:product)
-       xhr :get, :show, :id => product
+       xhr :get, :show, :id => @product
       expect(response).to render_template("show")
     end
 
     it "renders the same product which is clicked" do
-      product = FactoryGirl.create(:product)
-       xhr :get, :show, :id => product
-      expect(assigns(:product)).to eq product
+       xhr :get, :show, :id => @product
+      expect(assigns(:product)).to eq @product
     end
 
   end
 
   describe "Delete #destroy" do
+    before(:each) do
+      @product = FactoryGirl.create(:product)
+    end
 
     it "reduce the product count by 1 on destroy" do
-      product = FactoryGirl.create(:product)
       expect do
-        delete :destroy, {:id => product.to_param}
+        delete :destroy, {:id => @product.to_param}
       end.to change(Product, :count).by(-1)
     end
 
     it "redirects to products path on destroy" do
-      product = FactoryGirl.create(:product)
-      delete :destroy, :id => product
+      delete :destroy, :id => @product
       response.should redirect_to products_path
     end
 
   end
+
 
 end
