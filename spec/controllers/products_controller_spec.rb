@@ -53,6 +53,7 @@ describe ProductsController do
 
 
   describe "Get #show" do
+
     before(:each) do
       @product = FactoryGirl.create(:product)
     end
@@ -70,6 +71,7 @@ describe ProductsController do
   end
 
   describe "Delete #destroy" do
+
     before(:each) do
       @product = FactoryGirl.create(:product)
     end
