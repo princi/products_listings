@@ -28,7 +28,7 @@ class ProductsController < ApplicationController
       if @product.update(product_params)
         format.html { redirect_to products_path, notice: 'Product was successfully updated.' }
       else
-        format.html { render :edit }
+        format.html { render :edit, error: "Please pass the valid parameters" }
       end
     end
   end
