@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
       if @product.save
         format.html { redirect_to products_path, notice: 'Product was successfully created.' }
       else
-        format.html { redirect_to products_path, notice: 'Please send the valid parameters.' }
+        format.html { redirect_to products_path, alert: 'Please send the valid parameters.' }
       end
     end
   end
@@ -28,7 +28,7 @@ class ProductsController < ApplicationController
       if @product.update(product_params)
         format.html { redirect_to products_path, notice: 'Product was successfully updated.' }
       else
-        format.html { render :edit, error: "Please pass the valid parameters" }
+        format.html { render :edit }
       end
     end
   end
