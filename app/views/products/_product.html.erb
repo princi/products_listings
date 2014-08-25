@@ -1,9 +1,11 @@
 <div class="modal-dialog modal-lg">
 
   <div class="modal-content">
+
     <div class="modal-header">
       <h4 class="modal-title" id="myModalLabel"><%= @product.name %></h4>
     </div>
+
     <dl class="dl-horizontal">
       <dt><strong>Name</strong></dt>
       <dd><%= @product.name %></dd>
@@ -12,6 +14,7 @@
       <dt><strong>Price</strong></dt>
       <dd><%= @product.price %></dd>
     </dl>
+
     <div class="modal-footer">
       <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_product_path(@product), :class => 'btn btn-default' %>
@@ -21,6 +24,8 @@
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-danger' %>
 
-      </div>
+    </div>
+
   </div>
+
 </div>
