@@ -5,25 +5,16 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Description</th>
       <th>Price</th>
-      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
     <% @products.each do |product| %>
       <tr>
         <td><%= product.name %></td>
-        <td><%= product.description %></td>
         <td><%= product.price %></td>
         <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_product_path(product), :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      product_path(product),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-xs btn-danger' %>
+          <%= link_to "show", product_path(product), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', :class => 'btn btn-default btn-xs' }%>
         </td>
       </tr>
     <% end %>
@@ -31,4 +22,3 @@
 </table>
 
 <%= render "form" %>
-<%= link_to 'Add release', product_path(Product.first),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}  %>
