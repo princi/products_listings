@@ -1,5 +1,5 @@
 # Product Listing is a simple application that can be used to list products.
-# Run the following commands to setup on system:-
+### Run the following commands to setup on system:-
 
 1. Clone Git repository:-
 ``` shell
