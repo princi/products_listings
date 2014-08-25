@@ -1,1 +1,24 @@
-<p>Testing Testing</p>
+<div class="page-header">
+  <h1> Products </h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= product.price %></td>
+        <td>
+          <%= link_to "show", product_path(product), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', :class => 'btn btn-default btn-xs' }%>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= render "form" %>
