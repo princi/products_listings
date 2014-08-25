@@ -1,11 +1,15 @@
-<div class="modal-dialog modal-sm">
+<div class="modal-dialog modal-lg">
+
   <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title" id="myModalLabel"><%= @product.name %></h4>
+    </div>
     <dl class="dl-horizontal">
-      <dt><strong>NAME</strong></dt>
+      <dt><strong>Name</strong></dt>
       <dd><%= @product.name %></dd>
-      <dt><strong>DESCRIPTION</strong></dt>
+      <dt><strong>Description</strong></dt>
       <dd><%= @product.description %></dd>
-      <dt><strong>PRICE</strong></dt>
+      <dt><strong>Price</strong></dt>
       <dd><%= @product.price %></dd>
     </dl>
     <div class="modal-footer">
