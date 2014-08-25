@@ -1,0 +1,14 @@
+<div class="modal-dialog modal-sm">
+  <div class="modal-content">
+    <dl class="dl-horizontal">
+      <dt><strong>NAME</strong></dt>
+      <dd><%= @product.name %></dd>
+      <dt><strong>DESCRIPTION</strong></dt>
+      <dd><%= @product.description %></dd>
+      <dt><strong>PRICE</strong></dt>
+      <dd><%= @product.price %></dd>
+    </dl>
+    <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_product_path(@product), :class => 'btn btn-default btn-xs' %>
+  </div>
+</div>

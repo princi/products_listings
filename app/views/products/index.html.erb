@@ -31,3 +31,4 @@
 </table>
 
 <%= render "form" %>
+<%= link_to 'Add release', product_path(Product.first),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}  %>
